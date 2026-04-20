@@ -30,7 +30,7 @@
   <h2>Models</h2>
 
   <div class="cards">
-    <a href="https://linktr.ee/Elderwivesgabii" target="_blank" class="card">
+    <a href="https://linktr.ee/Elderwivesgabi" target="_blank" class="card">
       <img src="https://via.placeholder.com/200x250">
       <span>Elderwivesgabi</span>
     </a>
@@ -55,13 +55,13 @@ form.addEventListener("submit", function(e) {
 
   const email = document.getElementById("email").value;
 
-  fetch("https://docs.google.com/forms/d/e/entry.1758530636/formResponse", {
+  fetch("https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse", {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: "entry.entry.1758530636" + email
+    body: "entry.YOUR_ENTRY_ID=" + email
   });
 
   document.getElementById("paywall").style.display = "none";

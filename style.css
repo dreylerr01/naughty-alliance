@@ -6,13 +6,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Background glow */
-.overlay {
+/* Animated background */
+.bg-animation {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(255,0,0,0.2), black 70%);
+  background: radial-gradient(circle, rgba(255,0,0,0.15), black 70%);
+  animation: pulse 6s infinite alternate;
   z-index: -1;
+}
+
+@keyframes pulse {
+  from { opacity: 0.3; }
+  to { opacity: 0.6; }
 }
 
 /* Header */
@@ -24,28 +30,28 @@ header {
 h1 {
   font-size: 50px;
   color: red;
-  text-shadow: 0 0 10px red, 0 0 20px red;
+  text-shadow: 0 0 15px red, 0 0 30px red;
 }
 
 /* Hero */
 .hero {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .hero h2 {
-  color: #ff4d4d;
-  margin-bottom: 20px;
+  color: red;
 }
 
-/* Glass form */
-.glass {
+/* Paywall */
+.paywall {
+  margin-top: 20px;
   display: inline-block;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
-  background: rgba(255, 0, 0, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 0, 0, 0.3);
+  background: rgba(255,0,0,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,0,0,0.3);
 }
 
 input {
@@ -54,7 +60,6 @@ input {
   background: transparent;
   border: 1px solid red;
   color: white;
-  outline: none;
 }
 
 button {
@@ -73,15 +78,17 @@ button:hover {
   color: red;
 }
 
-/* Models section */
+/* Models */
 .models {
   text-align: center;
   margin-top: 120px;
+  transition: 0.5s;
 }
 
-.models h2 {
-  color: red;
-  margin-bottom: 40px;
+/* Locked blur */
+.locked {
+  filter: blur(8px);
+  pointer-events: none;
 }
 
 /* Cards */
@@ -93,19 +100,29 @@ button:hover {
 }
 
 .card {
-  padding: 20px 40px;
-  border: 1px solid red;
-  color: red;
+  width: 200px;
   text-decoration: none;
-  font-size: 18px;
-  border-radius: 10px;
+  color: white;
+  border: 1px solid red;
+  border-radius: 12px;
+  overflow: hidden;
   transition: 0.3s;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card span {
+  display: block;
+  padding: 10px;
+  color: red;
 }
 
 .card:hover {
-  background: red;
-  color: black;
-  box-shadow: 0 0 20px red;
   transform: scale(1.05);
+  box-shadow: 0 0 20px red;
 }

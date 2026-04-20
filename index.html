@@ -7,28 +7,43 @@
 
 <body>
 
-<div class="overlay"></div>
+<div class="bg-animation"></div>
 
 <header>
   <h1>Naughty Alliance</h1>
 </header>
 
 <section class="hero">
-  <h2>Private Access</h2>
+  <h2>Members Only</h2>
 
-  <form id="emailForm" class="glass">
-    <input type="email" id="email" placeholder="Enter your email" required>
-    <button type="submit">Join</button>
-  </form>
+  <div class="paywall" id="paywall">
+    <p>Enter your email to unlock access</p>
+
+    <form id="emailForm">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <button type="submit">Unlock</button>
+    </form>
+  </div>
 </section>
 
-<section class="models">
+<section class="models locked" id="models">
   <h2>Models</h2>
 
   <div class="cards">
-    <a href="https://linktr.ee/Elderwivesgabi" target="_blank" class="card">Elderwivesgabi</a>
-    <a href="https://linktr.ee/Elderwiveschery" target="_blank" class="card">Elderwiveschery</a>
-    <a href="https://linktr.ee/Elderwivesakari" target="_blank" class="card">Elderwivesakari</a>
+    <a href="https://linktr.ee/Elderwivesgabii" target="_blank" class="card">
+      <img src="https://via.placeholder.com/200x250">
+      <span>Elderwivesgabi</span>
+    </a>
+
+    <a href="https://linktr.ee/Elderwiveschery" target="_blank" class="card">
+      <img src="https://via.placeholder.com/200x250">
+      <span>Elderwiveschery</span>
+    </a>
+
+    <a href="https://linktr.ee/Elderwivesakari" target="_blank" class="card">
+      <img src="https://via.placeholder.com/200x250">
+      <span>Elderwivesakari</span>
+    </a>
   </div>
 </section>
 
@@ -40,17 +55,21 @@ form.addEventListener("submit", function(e) {
 
   const email = document.getElementById("email").value;
 
-  fetch("https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse", {
+  fetch("https://docs.google.com/forms/d/e/entry.1758530636/formResponse", {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: "entry.YOUR_ENTRY_ID=" + email
+    body: "entry.entry.1758530636" + email
   });
 
-  alert("Access granted");
-  form.reset();
+  document.getElementById("paywall").style.display = "none";
+  document.getElementById("models").classList.remove("locked");
+
+  setTimeout(() => {
+    window.scrollTo({ top: document.getElementById("models").offsetTop, behavior: "smooth" });
+  }, 300);
 });
 </script>
 
